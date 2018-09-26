@@ -32,6 +32,7 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount
              "created_at": 1537425355
          },
         ......
+    ]
 }
 ```
 
