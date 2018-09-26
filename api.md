@@ -46,3 +46,54 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount
 |status|账户状态（1：正常；0：隐藏）|
 
 
+### 批量获取子账户概要信息
+
+**请求参数**
+
+|字段|必须|含义|备注|
+|---|---|---|---|
+|puids|string|true|puid用逗号拼接的字符串，例如：puids=78,82|
+
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v1/subaccount/batch
+```
+
+**返回结果**
+
+```
+{
+    err_no:0,
+    data:[
+        {
+            "puid": 4527,
+            "name": "poolin000dcr",
+            "shares_unit": "K",
+            "workers_active": 0,
+            "workers_inactive": 0,
+            "workers_dead": 1,
+            "accept_count": 92496,
+            "yesterday_amount": 0,
+            "shares_15m": 0,
+            "shares_24h": 0,
+            "reject_15m": 0, 
+        },
+       ......
+   ]
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|puid|子账户id|
+|name|名称|
+|shares_unit|算力单位|
+|workers_active	|活跃矿机数|
+|workers_inactive|不活跃矿机数|
+|workers_dead|失效矿机数|
+|accept_count|接收数|
+|yesterday_amount|昨日实收|
