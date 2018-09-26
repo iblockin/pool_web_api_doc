@@ -1,5 +1,6 @@
 # pool_web_api_doc
 ## API
+#### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization
 
 ### 1、获取子账户列表
 
@@ -7,7 +8,6 @@
 
 |字段|必须|含义|备注|
 |---|---|---|---|
-
 
 
 **请求URL**
