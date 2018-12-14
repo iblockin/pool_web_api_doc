@@ -6,7 +6,7 @@
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 
 
@@ -103,7 +103,7 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount/batch
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
@@ -142,7 +142,7 @@ GET https://api-prod.poolin.com/api/public/v2/payment/stats
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
@@ -219,7 +219,7 @@ GET https://api-prod.poolin.com/api/public/v2/payment/history
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
@@ -277,7 +277,7 @@ GET  https://api-prod.poolin.com/api/public/v2/group/all
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
@@ -344,7 +344,7 @@ GET  https://api-prod.poolin.com/api/public/v2/worker
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
@@ -400,7 +400,7 @@ GET  https://api-prod.poolin.com/api/public/v2/worker/{worker_id}
 
 **请求参数**
 
-|字段|必须|含义|备注|
+|字段|类型|必须|备注|
 |---|---|---|---|
 |puid|int|true|子账户id|
 |region_id|string|true|地区(从矿机列表接口可获取)|
@@ -446,3 +446,39 @@ GET  https://api-prod.poolin.com/api/public/v2/worker/{work_id}/share-history
 |---|---|
 |unit|算力单位|
 |tickers|算力和拒绝率数组|
+
+## PUBLIC API
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|coin_tag|string|true|币种TAG, 可选值(BTC,LTC,BCH,DASH,DCR,SC,ZEC,ETH,ETN,XMR)
+|start_ts|int|true|起始UNIX时间戳
+|end_ts|int|false|结束时间戳
+
+
+### 1、按天统计币种的难度
+
+**请求URL**
+
+```
+GET  https://api-prod.poolin.com/api/public/v2/basedata/chain/difficulty/stat_by_day?coin_tag=BTC&start_ts=1540800000
+```
+
+**返回结果**
+
+```
+{
+    "err_no": 0,
+    "data": {
+        "2018-10-30":  {
+            "avg_difficulty": "7182852313938.34",  //平均难度
+            "count": 154 //块数量
+        },
+        "2018-10-31":  {
+            avg_difficulty: "7182852313938.34",
+            "count": 163
+        },
+        ......
+    }
+}
+```
