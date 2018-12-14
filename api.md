@@ -461,7 +461,7 @@ GET  https://api-prod.poolin.com/api/public/v2/worker/{work_id}/share-history
 **请求URL**
 
 ```
-GET  https://api-prod.poolin.com/api/public/v2/basedata/chain/difficulty/stat_by_day?coin_tag=BTC&start_ts=1540800000
+GET  https://api-prod.poolin.com/api/public/v2/basedata/chain/difficulty/stat_by_day?coin_tag={coin_tag}&start_ts={start_ts}
 ```
 
 **返回结果**
