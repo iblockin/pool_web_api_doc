@@ -452,7 +452,7 @@ GET  https://api-prod.poolin.com/api/public/v2/worker/{work_id}/share-history
 |字段|类型|必须|备注|
 |---|---|---|---|
 |coin_tag|string|true|币种TAG, 可选值(BTC,LTC,BCH,DASH,DCR,SC,ZEC,ETH,ETN,XMR)
-|start_ts|int|true|起始UNIX时间戳
+|start_ts|int|true|起始时间戳
 |end_ts|int|false|结束时间戳
 
 
