@@ -1,8 +1,21 @@
 # pool_web_api_doc
+
+## ReadToken
+只能查看token所属子账户的数据，并且不能修改相关子账户敏感信息，如收款地址等。
+#### ReadToken获取方式
+1. 首先创建矿池账户，并创建子账户。
+1. 在网页右上角下拉框点击```子账户管理```
+1. 在相应子账户右侧点击```设置``` - ```设置观察者```
+1. 创建了子账户之后会得到一个链接，如：www.poolin.com/my/8000010/zec?read_token=wowgLj2*****ga 链接最后wow开头的这一串随机码就是该子账户的ReadToken，8000010就是该子账户的puid
+
+
+## OwnerTOken
+暂不支持。比ReadToken拥有更高权限，支持账户层面的操作，也能看所有子账户数据。
+
 ## API
 #### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization
 
-### 1、获取子账户列表
+### 1、获取子账户列表（需要OwnerToken）
 
 **请求参数**
 
@@ -47,7 +60,7 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount
 |status|账户状态（1：正常；0：隐藏）|
 
 
-### 2、批量获取子账户概要信息
+### 2、批量获取子账户概要信息（需要OwnerToken）
 
 **请求参数**
 
@@ -446,6 +459,57 @@ GET  https://api-prod.poolin.com/api/public/v2/worker/{work_id}/share-history
 |---|---|
 |unit|算力单位|
 |tickers|算力和拒绝率数组|
+
+### 9、子账户算力历史
+
+**请求参数**
+
+|字段|必须|含义|备注|
+|---|---|---|---|
+|puid|int|true|子账户id|
+|count|int|true|刻度数目|
+|dimension|string|true|1h小时刻度，1d天刻度|
+|start_ts|int|true|开始时间戳|
+|coin_type|string|true|币种|
+
+
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/worker/share-history
+```
+
+**返回结果**
+
+```
+{
+    "err_no": 0,
+    "data": {
+        "unit": "P",
+        "tickers": [
+            [
+                1561039200,
+                163.349,
+                0.0013
+            ],
+            [
+                1561042800,
+                163.288,
+                0.001
+            ],
+        ]
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|unit|算力的单位|
+|tickers|刻度信息，正序。 其中3个数据第一个是时间戳，第二个是算力值，第三个是拒绝率(小数表示）|
+
 
 ## PUBLIC API
 
