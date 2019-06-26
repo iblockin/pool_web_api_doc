@@ -9,8 +9,12 @@
 1. 创建了子账户之后会得到一个链接，如：www.poolin.com/my/8000010/zec?read_token=wowgLj2*****ga 链接最后wow开头的这一串随机码就是该子账户的ReadToken，8000010就是该子账户的puid
 
 
-## OwnerTOken
+## OwnerToken
 暂不支持。比ReadToken拥有更高权限，支持账户层面的操作，也能看所有子账户数据。
+
+## CredentialsToken
+可以创建账户、生成观察者、修改地址。
+[Credentials](./credentials.md)
 
 ## API
 #### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization
