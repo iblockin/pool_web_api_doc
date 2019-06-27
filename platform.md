@@ -29,7 +29,7 @@ access_token就是我们需要的token，expires_in是有效期
 api的相关信息如返回的格式，携带token的方式请统一参考
 [api.md](./api.md)
 
-### 创建子账户 需要subaccount-create
+### 创建子账户 |需要subaccount-create
 **请求参数**
 
 |字段|类型|必须|备注|
@@ -50,13 +50,16 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/create
 ``` json
 {
     "err_no": 0,
-    "data": {
+    "data": [
         "puid": 9999888,
         "name": "111ttbtc",
         "default_coin_type": "zec",
         "coins": {},
         "created_at": 1561537835
-    }
+    ],
+    [
+        ...
+    ]
 }
 
 ```
@@ -79,7 +82,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/create
 |name|名称|
 |default_coin_type|默认币种|
 
-### 创建观察者、观察者token  需要watcher-create
+### 创建观察者、观察者token  |需要watcher-create
 **请求参数**
 
 |字段|类型|必须|备注|
@@ -133,7 +136,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/create
 |subaccount_name|子账户名称|
 
 
-### 更新子账户地址 需要 address-update
+### 更新子账户地址 |需要address-update
 **请求参数**
 
 |字段|类型|必须|备注|
@@ -172,7 +175,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/{puid}/update
 |---|---|
 
 
-## 云算力功能的基本情况 需要cloud
+## 云算力功能的基本情况 |需要cloud
 **我们不允许一个子账户既出让算力，也受让算力。同一时间只能是一种状态。现在仅支持比特币btc的转移，单位只能是T。从美东区域接入的算力暂时无法被转移。**
 
 
