@@ -12,9 +12,9 @@
 ## OwnerToken
 暂不支持。比ReadToken拥有更高权限，支持账户层面的操作，也能看所有子账户数据。
 
-## CredentialsToken
+## PlatformToken
 可以创建账户、生成观察者、修改地址。
-[Credentials](./credentials.md)
+[Platform](./platform.md)
 
 ## API
 #### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization
