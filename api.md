@@ -299,6 +299,7 @@ GET  https://api-prod.poolin.com/api/public/v2/group/all
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
 |status|string|true|状态（全部：ALL；活跃：ACTIVE；不活跃：INACTIVE；失效：DEAD）|
+|page|int|true|页码|
 |pagesize|int|true|每页数据条数|
 
 **请求URL**
