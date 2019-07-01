@@ -29,6 +29,127 @@ access_token就是我们需要的token，expires_in是有效期
 api的相关信息如返回的格式，携带token的方式请统一参考
 [api.md](./api.md)
 
+### 子账户列表 
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|filter|string|true|只能是visible,hidden,all三选一|
+
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/subaccount
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": [
+        "puid": 9999888,
+        "name": "111ttbtc",
+        "nickname": "111ttbtc",
+        "default_coin_type": "zec",
+        "coins": {},
+        "created_at": 1561537835
+    ],
+    [
+        ...
+    ]
+}
+
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|puid|子账户id|
+|name|名称|
+|default_coin_type|默认币种|
+
+---
+### 批量查询子账户算力信息
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puids|string|true|逗号分隔的puid|
+
+
+**请求URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/batch
+```
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": [
+        "puid": 9999888,
+        "name": "111ttbtc",
+        "shares_unit": "T",
+        "default_coin_type": "zec",
+        "workers_active": 21,
+        "workers_inactive": 1,
+        "workers_dead": 0,
+        "accept_count": 21,
+        "yesterday_amount": 12389283,
+        "shares_15m": 33.1
+        "shares_1h": 23.1
+        "shares_24h": 33.2
+        "reject_1h": 0.03
+    ],
+    [
+        ...
+    ]
+}
+
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|puid|子账户id|
+|name|名称|
+|shares_unit|算力单位|
+|default_coin_type|默认币种|
+|workers_active|活跃矿机|
+|workers_inactive|非活跃矿机|
+|workers_dead|死亡矿机|
+|accept_count||
+|yesterday_amount|昨日收益|
+|shares_15m|实时算力|
+|shares_1h|1小时算力|
+|shares_24h|24小时算力|
+|reject_1h|拒绝率 小数形式|
+
+---
+### 查询某个子账户和币种的信息
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户id|
+|coin_type|string|true|币种|
+
+
+**请求URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/summary
+```
+**返回结果**
+
+同 ```批量查询子账户算力信息``` 返回类似。
+
+---
 ### 创建子账户 |需要subaccount-create
 **请求参数**
 
@@ -82,6 +203,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/create
 |name|名称|
 |default_coin_type|默认币种|
 
+---
 ### 创建观察者、观察者token  |需要watcher-create
 **请求参数**
 
@@ -135,7 +257,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/create
 |expired_at|过期时间|
 |subaccount_name|子账户名称|
 
-
+---
 ### 更新子账户地址 |需要address-update
 **请求参数**
 
@@ -229,7 +351,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 |end_ts|过期时间戳|
 |status|1未开始 2生效中 3过期|
 
-
+---
 ### 云算力-可转让算力查询
 ` 云算力现在仅支持btc `
 目前最多只能转让实时算力的60%，多个合约累计计算。 
@@ -268,7 +390,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/allow-sell?coin_typ
 |can_sell|允许转移的算力大小|
 |unit|算力单位|
 
-
+---
 ### 云算力-受让方查询
 ` 云算力现在仅支持btc `
  
@@ -307,7 +429,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/check-name?name=tes
 |---|---|
 |data|是否存在受让方|
 
-
+---
 ### 云算力-删除合约
 ` 云算力现在仅支持btc ` 
 
@@ -340,7 +462,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/delete
 |返回值字段|说明|
 |---|---|
 
-
+---
 ### 云算力-创建合约、转移算力
 ` 云算力现在仅支持btc ` 
 
