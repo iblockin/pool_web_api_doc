@@ -349,7 +349,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 |unit|算力单位|
 |start_ts|开始时间戳|
 |end_ts|过期时间戳|
-|status|1未开始 2生效中 3过期|
+|status|1未开始 2生效中 3过期 4已删除|
 
 ---
 ### 云算力-可转让算力查询
