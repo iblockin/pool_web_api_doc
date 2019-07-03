@@ -475,7 +475,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/delete
 |unit|string|true|转让算力单位，目前只能是T|
 |hashrate|int|true|转让的算力值|
 |to|string|true|受让方子账户名|
-|start_time|int|true|开始时间|
+|start_time|int|true|开始时间，web上目前只显示到天级别的精度，建议以某天0点开始。|
 |end_time|int|true|结束时间|
 
 
