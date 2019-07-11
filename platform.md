@@ -263,7 +263,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/create
 
 |字段|类型|必须|备注|
 |---|---|---|---|
-|address|int|true|要更新的地址|
+|address|string|true|要更新的地址|
 |coin_type|string|true|是要更新哪一个币种的地址|
 
 
