@@ -83,7 +83,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/subaccount
 **请求URL**
 
 ```
-POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/batch
+GET https://api-prod.poolin.com/api/public/v2/platform/subaccount/batch
 ```
 **返回结果**
 
@@ -143,7 +143,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/batch
 **请求URL**
 
 ```
-POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/summary
+GET https://api-prod.poolin.com/api/public/v2/platform/subaccount/summary
 ```
 **返回结果**
 

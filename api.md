@@ -229,7 +229,7 @@ GET https://api-prod.poolin.com/api/public/v2/payment/history
 |address|支付地址|
 |txhash|交易哈希|
 |unpaid_reason|未支付原因|
-|payment_status|支付状态|
+|payment_status|支付状态: PAID 已支付,PENDING 支付中,DELAYED 延迟|
 |paid_at|支付时间|
 
 ### 5、矿机分组列表
