@@ -588,3 +588,40 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |---|---|
 |data|合约id|
 
+---
+
+### vcash 合并挖矿开关 
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户ID|
+
+**请求URL**
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/vcash/open  打开vcash合并挖矿
+```
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/vcash/close  关闭vcash合并挖矿
+```
+
+**返回结果**
+
+打开vcash接口
+``` json
+{
+    "err_no": 0,
+    "data": null
+}
+```
+
+关闭vcash接口
+``` json
+{
+    "err_no": 0,
+    "data": null
+}
+```
+
