@@ -258,6 +258,61 @@ POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/create
 |subaccount_name|子账户名称|
 
 ---
+### 创建新版本观察者token(分权限)  |需要watcher-create
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|name|string|true|子账户名称|
+|coin_types|array|true|观察者能看到的币种,如['btc']|
+|puid|int|true|子账户id|
+|watcher_type|array|true|观察者权限['dashboard', 'payment', 'worker']
+
+
+**请求URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/create/new
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "token": "wowEuP*************EiL",
+        "puid": 9999888,
+        "coin_types": "btc",
+        "regions": "*",
+        "name": "ttttt",
+        "created_at": 1561538162,
+        "expired_at": 1577349362,
+        "subaccount_name": "111ttbtc"
+    }
+}
+
+```
+如果err_no不为0，是以下的数字的话，请对应错误原因修改。
+
+|错误码|原因|
+|---|---|
+|100|目前最多50个生效的观察者|
+
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|token|观察者token|
+|puid|子账户id|
+|coin_types|支持的币种信息|
+|name|观察者名称|
+|created_at|创建时间|
+|expired_at|过期时间|
+|subaccount_name|子账户名称|
+
+---
 ### 更新子账户地址 |需要address-update
 **请求参数**
 
@@ -296,6 +351,31 @@ POST https://api-prod.poolin.com/api/public/v2/platform/subaccount/{puid}/update
 |返回值字段|说明|
 |---|---|
 
+---
+### 删除观察者
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|string|true|PUID|
+|token|string|true|要删除的观察者token|
+
+**请求URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/delete
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": null
+}
+```
+
+---
 
 ## 云算力功能的基本情况 |需要cloud
 **我们不允许一个子账户既出让算力，也受让算力。同一时间只能是一种状态。现在仅支持比特币btc的转移，单位只能是T。从美东区域接入的算力暂时无法被转移。**
@@ -507,4 +587,41 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |返回值字段|说明|
 |---|---|
 |data|合约id|
+
+---
+
+### vcash 合并挖矿开关 
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户ID|
+
+**请求URL**
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/vcash/open  打开vcash合并挖矿
+```
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/vcash/close  关闭vcash合并挖矿
+```
+
+**返回结果**
+
+打开vcash接口
+``` json
+{
+    "err_no": 0,
+    "data": null
+}
+```
+
+关闭vcash接口
+``` json
+{
+    "err_no": 0,
+    "data": null
+}
+```
 

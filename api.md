@@ -164,6 +164,8 @@ GET https://api-prod.poolin.com/api/public/v2/payment/stats
 |puid|int|true|子账户id|
 |coin_type|string|true|币种|
 |page|int|true|第几页|
+|start_date|int|false|开始时间，格式为：20190823|
+|end_date|int|false|结束时间，格式为：20190930|
 
 **请求URL**
 
