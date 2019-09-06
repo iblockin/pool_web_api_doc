@@ -1,18 +1,18 @@
 ## Platform 
 
 A valid certificate (token) issued by the user center, valid for 2 hours. Please re-acquire after expiration.
-This authentication method only supports some advanced interfaces. For unsupported parts, please use the read token.
+This authentication method only supports some advanced API. For unsupported parts, please use the read token.
 
 
 ### Qualification
 This feature is only available to some users. Please contact customer service if you need to use it.
 
 
-### 获取证书 token
+### get token
 1. Prepare the client_id and client_secret provided by us.
 2. [post] https://account.blockin.com/oauth/v1/token parameter ```client_id，client_secret，grant_type，scopes```
 3. grant_type fixed value of ```client_credentials```
-4. The scopes currently have four subaccount-create, watcher-create, address-update, and cloud, corresponding to specific interface permissions. Separate into string submissions with spaces.
+4. The scopes currently have four subaccount-create, watcher-create, address-update, and cloud, corresponding to specific API permissions. Separate into string submissions with spaces.
 
 
 Will get a similar return
@@ -355,13 +355,13 @@ If ```err_no``` is not 0, it is the following number, please correct it for the 
 |---|---|
 
 ---
-### 删除观察者
+### delete observer
 **Request parameter**
 
 |Field|Type|Require|Remark|
 |---|---|---|---|
 |puid|string|true|PUID|
-|token|string|true|要删除的观察者token|
+|token|string|true|observer token|
 
 **URL**
 
@@ -380,19 +380,19 @@ POST https://api-prod.poolin.com/api/public/v2/platform/watcher/token/delete
 
 ---
 
-## 云算力功能的基本情况 |需要cloud
-**我们不允许一个子账户既出让算力，也受让算力。同一时间只能是一种状态。现在仅支持比特币btc的转移，单位只能是T。从美东区域接入的算力暂时无法被转移。**
+## Cloud Hashrate's Info |require cloud
+**We do not allow a sub-account to transfer and be transferee. The same time can only be a state. Now only the transfer of BTC is supported, the unit can only be TH/s.**
 
 
-### 云算力-合约、转移列表
-` 云算力现在仅支持btc ` 
-显示最新的100条未删除云算力分配记录。
+### Cloud Hashrate contact list
+` Only btc ` 
+Display the latest 100 undeleted records。
 
 **Request parameter**
 
 |Field|Type|Require|Remark|
 |---|---|---|---|
-|coin_type|string|true|coin_type，目前仅支持btc|
+|coin_type|string|true|coin_type，only ```btc```|
 |puid|int|true|sub-account id|
 
 
@@ -425,19 +425,19 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 
 |Return field|Description|
 |---|---|
-|id|转移合约id|
-|name|转让人|
-|to|受让人|
-|hashrate|算力值|
+|id|contact id|
+|name|transfer|
+|to|transferee|
+|hashrate|hashrate|
 |unit|Hashrate unit|
-|start_ts|开始时间戳|
-|end_ts|过期时间戳|
-|status|1未开始 2生效中 3过期 4已删除|
+|start_ts|begin timestamp|
+|end_ts|end timestamp|
+|status|1 Not started, 2 Effective, 3 Expired, 4 Deleted|
 
 ---
-### 云算力-可转让算力查询
-` 云算力现在仅支持btc `
-目前最多只能转让实时算力的60%，多个合约累计计算。 
+### Cloud Hashrate- Query Available Hashrate 
+` Only btc `
+At present, only 60% of the real-time Hashrate can be transferee, and the cumulative calculation of multiple contracts can be made
 
 **Request parameter**
 
@@ -470,20 +470,19 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/allow-sell?coin_typ
 
 |Return field|Description|
 |---|---|
-|can_sell|允许转移的算力大小|
+|can_sell|Available Hashrate|
 |unit|Hashrate unit|
 
 ---
-### 云算力-受让方查询
-` 云算力现在仅支持btc `
+### Cloud Hashrate-Query transferee
+` Only btc `
  
-
 **Request parameter**
 
 |Field|Type|Require|Remark|
 |---|---|---|---|
-|puid|int|true|出让方puid|
-|name|string|true|受让方名称，长度4-30|
+|puid|int|true|transfer puid|
+|name|string|true|transferee name，length 4-30|
 
 
 **URL**
@@ -501,8 +500,8 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/check-name?name=tes
 }
 |error_code|reason|
 |---|---|
-|101|受让方出让算力中|
-|103|出让方有来自别人的算力|
+|101|transferee is a transfer|
+|103|The transferor has the hashrate from others|
 
 ```
 
@@ -510,18 +509,18 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/check-name?name=tes
 
 |Return field|Description|
 |---|---|
-|data|是否存在受让方|
+|data|Is there a transferee|
 
 ---
-### 云算力-删除合约
-` 云算力现在仅支持btc ` 
+### Cloud Hashrate-delete contact
+` Only btc ` 
 
 **Request parameter**
 
 |Field|Type|Require|Remark|
 |---|---|---|---|
-|puid|int|true|合约所属转让人的puid|
-|id|int|true|合约id|
+|puid|int|true|owner puid|
+|id|int|true|contact id|
 
 
 **URL**
@@ -546,8 +545,8 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/delete
 |---|---|
 
 ---
-### 云算力-创建合约、转移算力
-` 云算力现在仅支持btc ` 
+### Cloud Hashrate-create contact
+` Only btc ` 
 
 **Request parameter**
 
@@ -555,11 +554,11 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/delete
 |---|---|---|---|
 |puid|int|true|出让人sub-account id|
 |coin_type|string|true|coin_type，目前仅支持btc|
-|unit|string|true|转让算力单位，目前只能是T|
-|hashrate|int|true|转让的算力值|
-|to|string|true|受让方子账户名|
-|start_time|int|true|开始时间，web上目前只显示到天级别的精度，建议以某天0点开始。|
-|end_time|int|true|结束时间|
+|unit|string|true|hashrate unit ```T```|
+|hashrate|int|true|hashrate, for example: 100|
+|to|string|true|transferee sub-account name|
+|start_time|int|true|Start timestamp, the web only shows the accuracy of day level at present, it is recommended to start at 0:00 a.m. on a certain day.|
+|end_time|int|true|End timestamp|
 
 
 **URL**
@@ -579,21 +578,21 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 ```
 |error_code|reason|
 |---|---|
-|100|受让方不存在|
-|101|受让方出让算力中|
-|102|不允许出让超过60%的算力|
-|103|出让方有来自别人的算力|
+|100|transferee not exists|
+|101|transferee is transfer hashrate now|
+|102|No more than 60% of the hashrate is allowed to be transferred.|
+|103|transfer is a transferee|
 
 
 **Return field description**
 
 |Return field|Description|
 |---|---|
-|data|合约id|
+|data|contact id|
 
 ---
 
-### vcash 合并挖矿开关 
+### vcash merge-mining swtich 
 
 **Request parameter**
 
@@ -612,7 +611,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/vcash/close  关闭vcash
 
 **Results**
 
-打开vcash接口
+open vcash
 ``` json
 {
     "err_no": 0,
@@ -620,7 +619,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/vcash/close  关闭vcash
 }
 ```
 
-关闭vcash接口
+close vcash
 ``` json
 {
     "err_no": 0,

@@ -368,7 +368,7 @@ GET  https://api-prod.poolin.com/api/public/v2/worker
 |status|Status|
 
 
-### 7、单台矿机概要信息
+### 7、Single miner info
 
 **Request parameter**
 
