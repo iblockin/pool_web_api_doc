@@ -517,6 +517,52 @@ GET https://api-prod.poolin.com/api/public/v2/worker/share-history
 |unit|算力的单位|
 |tickers|刻度信息，正序。 其中3个数据第一个是时间戳，第二个是算力值，第三个是拒绝率(小数表示）|
 
+### 10、矿机总览信息
+
+**请求参数**
+
+|字段|必须|含义|备注|
+|---|---|---|---|
+|puid|int|true|子账户id|
+|coin_type|string|true|币种|
+
+
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/worker/stats
+```
+
+**返回结果**
+
+```
+{
+    "err_no": 0,
+    "data": {
+        "workers_active": 1,
+        "workers_inactive": 0,
+        "workers_dead": 0,
+        "shares_15m": 13.504,
+        "workers_total": 1,
+        "shares_24h": 11.888,
+        "shares_unit": "T"
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|workers_active|总活跃矿机数|
+|workers_inactive|非活跃|
+|workers_dead|无效矿机|
+|workers_total|矿机数目（活跃+非活跃）|
+|shares_15m|算力15m|
+|shares_24h|算力24h|
+|shares_unit|单位|
+
 
 ## PUBLIC API
 
@@ -553,3 +599,4 @@ GET  https://api-prod.poolin.com/api/public/v2/basedata/chain/difficulty/stat_by
     }
 }
 ```
+
