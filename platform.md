@@ -412,7 +412,8 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
         "unit": "T",
         "start_ts": 1557936000,
         "end_ts": 1558022400,
-        "status": 3
+        "status": 3,
+        "suspend": 0
     }
 }
 
@@ -430,6 +431,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 |start_ts|开始时间戳|
 |end_ts|过期时间戳|
 |status|1未开始 2生效中 3过期 4已删除|
+|suspend|0-正常,1-已暂停|
 
 ---
 ### 云算力-可转让算力查询
@@ -587,6 +589,48 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |返回值字段|说明|
 |---|---|
 |data|合约id|
+
+---
+### 云算力暂停
+
+说明：该接口不是幂等的，会根据当前合约的状态开或关（已暂停的合约会切换为正常，正常的合约会切换为暂停）
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|id|int|true|合约ID|
+
+**请求URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/cloud/suspend
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "suspend": 1
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|suspend|当前状态(0正常,1暂停)|
+
+**错误码说明**
+
+|错误码|原因|
+|---|---|
+|113|未找到该算力转让合约|
+|114|该合约还未开始|
+|115|该合约已结束|
 
 ---
 

@@ -415,7 +415,8 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
         "unit": "T",
         "start_ts": 1557936000,
         "end_ts": 1558022400,
-        "status": 3
+        "status": 3,
+        "suspend": 0
     }
 }
 
@@ -433,6 +434,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 |start_ts|begin timestamp|
 |end_ts|end timestamp|
 |status|1 Not started, 2 Effective, 3 Expired, 4 Deleted|
+|suspend|0-normal,1-suspended|
 
 ---
 ### Cloud Hashrate- Query Available Hashrate 
@@ -589,6 +591,48 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |Return field|Description|
 |---|---|
 |data|contact id|
+
+---
+### Suspended Cloud Hashrate-create Contract
+
+Note: this interface is not idempotent. It will turn on or off according to the current contract status (the suspended contract will switch to normal, and the normal contract will switch to suspended)
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|id|int|true|Contract ID|
+
+**URL**
+
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/cloud/suspend
+```
+
+**Results**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "suspend": 1
+    }
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|suspend|current status(0-normal,1-suspended)|
+
+**Error code description**
+
+|error_code|reason|
+|---|---|
+|113|Not found the Contract|
+|114|The contract hasn't started yet|
+|115|Contract closed|
 
 ---
 
