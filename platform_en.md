@@ -671,3 +671,70 @@ close vcash
 }
 ```
 
+---
+
+### Get auto payment status
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|puid|int|true|sub-account id|
+|coin_type|string|true|coin type|
+
+**URL**
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/payment/auto
+```
+
+**Results**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "is_close": 0   
+    }
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|is_close|Is it closed? (0-normal, 1-closed automatic payment)|
+
+---
+
+### OPEN/CLOSE automatic payment
+
+Note:The API automatically reverses the current payment status
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|puid|int|true|sub-account id|
+|coin_type|string|true|coin type|
+
+**URL**
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/payment/auto
+```
+
+**Results**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "is_close": 1  
+    }
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|is_close|Is it closed? (0-normal, 1-closed automatic payment)|

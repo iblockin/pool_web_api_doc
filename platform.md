@@ -669,3 +669,70 @@ POST https://api-prod.poolin.com/api/public/v2/platform/vcash/close  关闭vcash
 }
 ```
 
+---
+
+### 获取自动支付状态
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户ID|
+|coin_type|string|true|币种|
+
+**请求URL**
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/payment/auto
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "is_close": 0   
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|is_close|是否关闭 (0-正常, 1-关闭了自动支付)|
+
+---
+
+### 打开/关闭自动支付
+
+说明：该接口会自动根据当前支付状态取反
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户ID|
+|coin_type|string|true|币种|
+
+**请求URL**
+```
+POST https://api-prod.poolin.com/api/public/v2/platform/payment/auto
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "is_close": 1  
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|is_close|是否关闭 (0-正常, 1-关闭了自动支付)|
