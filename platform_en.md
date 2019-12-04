@@ -160,6 +160,7 @@ Return similar as ```Batch query sub-account calculation information```
 |---|---|---|---|
 |name|string|true|Sub-account name|
 |coin_type|string|true|default coin|
+|address|string|false|payout address|
 |payment_id|string|false|Payment id of xmr and etn|
 
 

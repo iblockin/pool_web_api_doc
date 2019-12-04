@@ -157,6 +157,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/subaccount/summary
 |---|---|---|---|
 |name|string|true|子账户名称|
 |coin_type|string|true|默认的币种|
+|address|string|false|收款地址|
 |payment_id|string|false|xmr、etn的支付id|
 
 
