@@ -636,6 +636,137 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/suspend
 
 ---
 
+### Cloud Hashrate contract lists
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|puid|int|true|sub-account id|
+|coin_type|string|true|coin type|
+|page_size|int|false|per page size;default:20;max:100|
+|page|int|false|page|
+
+**URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/cloud/sells
+```
+
+**Result**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "total": 10,
+        "per_page": 5,
+        "last_page": 2,
+        "current_page": 1,
+        "data": [
+            {
+                "id": 16,
+                "name": "",
+                "to": "btctest",
+                "hashrate": 1,
+                "unit": "T",
+                "start_ts": 1557936000,
+                "end_ts": 1558022400,
+                "status": 3,
+                "suspend": 0
+            },
+            {
+                "id": 17,
+                "name": "",
+                "to": "btctest",
+                "hashrate": 5,
+                "unit": "T",
+                "start_ts": 1558022400,
+                "end_ts": 1558195200,
+                "status": 3,
+                "suspend": 0
+            },
+            ......
+        ]
+    }
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|total|total records|
+|per_page|page size|
+|last_page|last_page|
+|current_page|current_page|
+|data.id|contact id|
+|data.name|transfer|
+|data.to|transferee|
+|data.hashrate|hashrate|
+|data.unit|Hashrate unit|
+|data.start_ts|begin timestamp|
+|data.end_ts|end timestamp|
+|data.status|1 Not started, 2 Effective, 3 Expired, 4 Deleted|
+|data.suspend|0-normal,1-suspended|
+
+---
+
+### Cloud Hashrate-get info by contract id
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|-|-|-|-|
+
+**URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/cloud/contracts/{id} {id}should be replaced with contract ID
+```
+
+**Results**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "id": 16,
+        "name": "",
+        "to": "btctest",
+        "hashrate": 1,
+        "unit": "T",
+        "start_ts": 1557936000,
+        "end_ts": 1558022400,
+        "status": 3,
+        "suspend": 0
+    }
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|id|contact id|
+|name|transfer|
+|to|transferee|
+|hashrate|hashrate|
+|unit|Hashrate unit|
+|start_ts|begin timestamp|
+|end_ts|end timestamp|
+|status|1 Not started, 2 Effective, 3 Expired, 4 Deleted|
+|suspend|0-normal,1-suspended|
+
+**Error code description**
+
+|error_code|reason|
+|---|---|
+|404|Not Found Contract|
+
+---
+
 ### vcash merge-mining swtich 
 
 **Request parameter**

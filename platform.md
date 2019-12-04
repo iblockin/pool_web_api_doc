@@ -634,6 +634,137 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/suspend
 
 ---
 
+### 云算力卖方合约列表
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|puid|int|true|子账户ID|
+|coin_type|string|true|币种|
+|page_size|int|false|每页条数，默认20，最大100|
+|page|int|false|页数|
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/cloud/sells
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "total": 10,
+        "per_page": 5,
+        "last_page": 2,
+        "current_page": 1,
+        "data": [
+            {
+                "id": 16,
+                "name": "",
+                "to": "btctest",
+                "hashrate": 1,
+                "unit": "T",
+                "start_ts": 1557936000,
+                "end_ts": 1558022400,
+                "status": 3,
+                "suspend": 0
+            },
+            {
+                "id": 17,
+                "name": "",
+                "to": "btctest",
+                "hashrate": 5,
+                "unit": "T",
+                "start_ts": 1558022400,
+                "end_ts": 1558195200,
+                "status": 3,
+                "suspend": 0
+            },
+            ......
+        ]
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|total|总条数|
+|per_page|每页条数|
+|last_page|最后一页|
+|current_page|当前页|
+|data.id|转移合约id|
+|data.name|转让人|
+|data.to|受让人|
+|data.hashrate|算力值|
+|data.unit|算力单位|
+|data.start_ts|开始时间戳|
+|data.end_ts|过期时间戳|
+|data.status|1未开始 2生效中 3过期 4已删除|
+|data.suspend|0-正常,1-已暂停|
+
+---
+
+### 云算力-根据合约ID获取合约信息
+
+**请求参数**
+
+|字段|类型|必须|备注|
+|---|---|---|---|
+|-|-|-|-|
+
+**请求URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/platform/cloud/contracts/{id} {id}应替换为合约ID
+```
+
+**返回结果**
+
+``` json
+{
+    "err_no": 0,
+    "data": {
+        "id": 16,
+        "name": "",
+        "to": "btctest",
+        "hashrate": 1,
+        "unit": "T",
+        "start_ts": 1557936000,
+        "end_ts": 1558022400,
+        "status": 3,
+        "suspend": 0
+    }
+}
+```
+
+**返回字段说明**
+
+|返回值字段|说明|
+|---|---|
+|id|转移合约id|
+|name|转让人|
+|to|受让人|
+|hashrate|算力值|
+|unit|算力单位|
+|start_ts|开始时间戳|
+|end_ts|过期时间戳|
+|status|1未开始 2生效中 3过期 4已删除|
+|suspend|0-正常,1-已暂停|
+
+**错误码说明**
+
+|错误码|原因|
+|---|---|
+|404|未找到该算力转让合约|
+
+---
+
 ### vcash 合并挖矿开关 
 
 **请求参数**
