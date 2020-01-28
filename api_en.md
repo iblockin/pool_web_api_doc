@@ -527,6 +527,49 @@ GET https://api-prod.poolin.com/api/public/v2/worker/share-history
 |tickers|Scale information, positive sequence. The first of the three data is the timestamp, the second is the power calculation, and the third is the rejection rate (decimal)|
 
 
+### 10、Sub-accounting payout history
+
+**Request parameter**
+
+|Field|Type|Require|Remark|
+|---|---|---|---|
+|puid|int|true|-|
+|coin_type|string|true|-|
+|start_date|int|false|Starting time like ```20190823```|
+|end_date|int|false|End time like ```20190930```|
+
+
+**URL**
+
+```
+GET https://api-prod.poolin.com/api/public/v2/payment/payout-history
+```
+
+**Results**
+
+```
+{
+    "err_no": 0,
+    "data": [
+        {
+            "txhash":"e050c55e8449ae1781b81c25960bc6cecae0ebaeae896fc99bc51d47e1d0bxxx",
+            "amount":"12345",
+            "pay_time":"2019-12-02 00:00:00",
+        }
+    ]
+}
+```
+
+**Return field description**
+
+|Return field|Description|
+|---|---|
+|txhash||
+|amount||
+|pay_time||
+
+
+
 ## PUBLIC API
 
 |Field|Type|Require|Remark|
