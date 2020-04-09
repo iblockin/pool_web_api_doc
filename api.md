@@ -15,7 +15,7 @@
 ## API
 #### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization, 值为"Bearer TOKEN"，不含双引号，TOKEN替换成要传输的token值
 
-### 1、获取子账户列表（需要OwnerToken）
+### 1、~~获取子账户列表（需要OwnerToken）~~
 
 **请求参数**
 
@@ -60,7 +60,7 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount
 |status|账户状态（1：正常；0：隐藏）|
 
 
-### 2、批量获取子账户概要信息（需要OwnerToken）
+### 2、~~批量获取子账户概要信息（需要OwnerToken）~~
 
 **请求参数**
 
