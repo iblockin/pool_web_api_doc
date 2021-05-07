@@ -440,7 +440,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 ---
 ### Cloud Hashrate- Query Available Hashrate 
 ` Only btc `
-At present, only 60% of the real-time Hashrate can be transferee, and the cumulative calculation of multiple contracts can be made
+At present, only 90% of the real-time Hashrate can be transferee, and the cumulative calculation of multiple contracts can be made
 
 **Request parameter**
 
@@ -583,7 +583,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |---|---|
 |100|transferee not exists|
 |101|transferee is transfer hashrate now|
-|102|No more than 60% of the hashrate is allowed to be transferred.|
+|102|No more than 90% of the hashrate is allowed to be transferred.|
 |103|transfer is a transferee|
 
 

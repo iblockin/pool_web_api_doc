@@ -8,18 +8,14 @@
 1. 在相应子账户右侧点击```设置``` - ```设置观察者```
 1. 创建了子账户之后会得到一个链接，如：www.poolin.com/my/8000010/zec?read_token=wowgLj2*****ga 链接最后wow开头的这一串随机码就是该子账户的ReadToken，8000010就是该子账户的puid
 
-
-## OwnerToken
-暂不支持。比ReadToken拥有更高权限，支持账户层面的操作，也能看所有子账户数据。
-
 ## PlatformToken
-可以创建账户、生成观察者、修改地址。
+比ReadToken拥有更高权限，可以创建账户、生成观察者、修改地址。
 [Platform](./platform.md)
 
 ## API
 #### 注意：身份验证需要在请求的header中传入accessToken，参数名：authorization, 值为"Bearer TOKEN"，不含双引号，TOKEN替换成要传输的token值
 
-### 1、获取子账户列表（需要OwnerToken）
+### 1、~~获取子账户列表（需要OwnerToken）~~
 
 **请求参数**
 
@@ -64,7 +60,7 @@ GET https://api-prod.poolin.com/api/public/v1/subaccount
 |status|账户状态（1：正常；0：隐藏）|
 
 
-### 2、批量获取子账户概要信息（需要OwnerToken）
+### 2、~~批量获取子账户概要信息（需要OwnerToken）~~
 
 **请求参数**
 

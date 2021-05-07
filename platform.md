@@ -437,7 +437,7 @@ GET https://api-prod.poolin.com/api/public/v2/platform/cloud/transfer-hashrate?c
 ---
 ### 云算力-可转让算力查询
 ` 云算力现在仅支持btc `
-目前最多只能转让实时算力的60%，多个合约累计计算。 
+目前最多只能转让实时算力的90%，多个合约累计计算。 
 
 **请求参数**
 
@@ -581,7 +581,7 @@ POST https://api-prod.poolin.com/api/public/v2/platform/cloud/{puid}/transfer
 |---|---|
 |100|受让方不存在|
 |101|受让方出让算力中|
-|102|不允许出让超过60%的算力|
+|102|不允许出让超过90%的算力|
 |103|出让方有来自别人的算力|
 
 
