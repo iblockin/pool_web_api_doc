@@ -192,7 +192,7 @@ If ```err_no``` is not 0, it is the following number, please correct it for the 
 
 |error_code|reason|
 |---|---|
-|100|Currently up to 9999 sub-accounts are allowed, more need to apply separately|
+|100|Currently up to 200 sub-accounts are allowed, more need to apply separately|
 |101|Sub-account name already exists|
 |102|Only 100 sub-accounts can be created within 24 hours. If the frequency exceeds the frequency, an error will be reported.|
 |501，505|Address verification failed|
