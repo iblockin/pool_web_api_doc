@@ -1,3 +1,11 @@
+# Document outdated
+# Document outdated
+# Document outdated
+# Document outdated
+# [New Document](https://documenter.getpostman.com/view/17982947/UV5cAFWQ)。
+
+------
+
 ## Platform 
 
 A valid certificate (token) issued by the user center, valid for 2 hours. Please re-acquire after expiration.
