@@ -1,3 +1,14 @@
+# 文档过时
+# 文档过时
+# 文档过时
+# 文档过时
+# 请看[最新文档](https://documenter.getpostman.com/view/17982947/UV5cAFWQ)。
+
+
+----
+
+
+
 ## Platform 
 
 用户中心颁发的有效证书（token），有效时间2小时，过期后请重新获取。
